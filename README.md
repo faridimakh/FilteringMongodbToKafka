@@ -30,7 +30,7 @@ build services:zookeeper kafka brocker :
 <br>
 3. filter the data stored in the mongodb database (collection name: wikiChange) and send the result (one message per filter) to the kafka topic wikichangesresponses .
 <br>
-filtering is possible on the following fields:
+Filtering is possible on the following fields:
 
 -  type, 
 - user, 
