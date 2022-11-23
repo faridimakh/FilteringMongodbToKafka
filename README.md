@@ -2,7 +2,7 @@
 
 ## discription :
 the project consists of doing the following tasks
-1. 1-enrichir une collection dans une base de données Mongodb conteneurisée avec des documents json (wikichange)
+1. enrichir une collection dans une base de données Mongodb conteneurisée avec des documents json (wikichange)
 2. send an http request to filter with different criteria, then send the result obtained in a kafka topic in a single message.
 <br>
 <br>
@@ -28,7 +28,8 @@ build services:zookeeper kafka brocker :
 
 
 <br>
-3. filter the data stored in the mongodb database (collection name: wikiChange) and send the result (one message per filter) to the kafka topic wikichangesresponses 
+3. filter the data stored in the mongodb database (collection name: wikiChange) and send the result (one message per filter) to the kafka topic wikichangesresponses .
+<br>
 filtering is possible on the following fields:
 
 -  type, 
