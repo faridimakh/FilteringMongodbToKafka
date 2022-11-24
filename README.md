@@ -33,6 +33,7 @@ build services:zookeeper kafka brocker :
 Filtering is possible on the following fields:
 
 -  type, 
+- title
 - user, 
 - bot,
 - namespace,

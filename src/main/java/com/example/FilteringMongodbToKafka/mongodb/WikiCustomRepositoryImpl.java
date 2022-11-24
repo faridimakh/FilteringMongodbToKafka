@@ -16,7 +16,7 @@ public class WikiCustomRepositoryImpl implements WikiCustomRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public List<WikiChange> findWikisByProperties(String type, String user, Boolean bot, Integer namespace, String monid, String domain, Pageable page) {
+    public List<WikiChange> findWikisByProperties(String type, String title, String user, Boolean bot, Integer namespace, String monid, String domain, Pageable page) {
         final Query query = new Query().with(page);
         query.fields().exclude("_id").exclude("_class");
 
@@ -24,6 +24,7 @@ public class WikiCustomRepositoryImpl implements WikiCustomRepository {
 //-----------------------------------------------------------------------------------------------------------------
         final List<Criteria> criteria = new ArrayList<>();
         extracted(type,"type", criteria);
+        extracted(title,"title", criteria);
         extracted(user,"user", criteria);
         extracted(monid,"monid", criteria);
         extracted(domain,"Meta.domain", criteria);
@@ -38,7 +39,7 @@ public class WikiCustomRepositoryImpl implements WikiCustomRepository {
 //-----------------------------------------------------------------------------------------------------------------
 
         if (!criteria.isEmpty())
-            query.addCriteria(new Criteria().andOperator(criteria.toArray(new Criteria[criteria.size()])));
+            query.addCriteria(new Criteria().andOperator(criteria.toArray(new Criteria[0])));
         return mongoTemplate.find(query, WikiChange.class);
     }
 

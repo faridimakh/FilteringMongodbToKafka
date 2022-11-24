@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class wikiService {
+public class WikiService {
 
     @Autowired
     private WIkiRepository wIkiRepository;
@@ -17,8 +17,8 @@ public class wikiService {
         return wIkiRepository.insert(wikilist);
     }
 
-    public List<WikiChange> fetchWikisByProperties(String type, String user, Boolean bot, Integer namespace, String monid, String domain, Integer page) {
-        return wIkiRepository.findWikisByProperties(type, user, bot, namespace, monid, domain, PageRequest.of(0, 10000));
+    public List<WikiChange> fetchWikisByProperties(String type,String title, String user, Boolean bot, Integer namespace, String monid, String domain, Integer page) {
+        return wIkiRepository.findWikisByProperties(type,title, user, bot, namespace, monid, domain,PageRequest.of(0, 10000) );
     }
 }
 
