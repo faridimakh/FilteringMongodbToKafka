@@ -23,24 +23,28 @@ public class WikiCustomRepositoryImpl implements WikiCustomRepository {
 //-----------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------
         final List<Criteria> criteria = new ArrayList<>();
-        if (type != null && !type.isEmpty())
-            criteria.add(Criteria.where("type").is(type));
-        if (monid != null && !monid.isEmpty())
-            criteria.add(Criteria.where("user").is(user));
-        if (user != null && !user.isEmpty())
-            criteria.add(Criteria.where("monid").is(monid));
-        if (bot != null && !bot.toString().isEmpty())
-            criteria.add(Criteria.where("bot").is(bot));
+        extracted(type,"type", criteria);
+        extracted(user,"user", criteria);
+        extracted(monid,"monid", criteria);
+        extracted(domain,"Meta.domain", criteria);
+        extracted(domain,"Meta.domain", criteria);
+        extracted(bot,"bot", criteria);
+
+
         if (namespace != null && !namespace.toString().isEmpty())
             criteria.add(Criteria.where("namespace").lte(namespace));
-        if (domain != null && !domain.isEmpty())
-            criteria.add(Criteria.where("Meta.domain").is(domain));
+
 //-----------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------
 
         if (!criteria.isEmpty())
             query.addCriteria(new Criteria().andOperator(criteria.toArray(new Criteria[criteria.size()])));
         return mongoTemplate.find(query, WikiChange.class);
+    }
+
+    private static void extracted(Object string, String jstring, List<Criteria> criteria) {
+        if (string != null )
+            criteria.add(Criteria.where(jstring).is(string));
     }
 
 }
