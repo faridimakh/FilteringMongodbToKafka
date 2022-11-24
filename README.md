@@ -46,12 +46,11 @@ Filtering is possible on the following fields:
    -  user="TaxonBota"
    -  domain="commons.wikimedia.org"
 - need to launch: _curl --location --request GET 'http://localhost:8080/search?type=log&page=0&user=TaxonBota&domain=commons.wikimedia.org'_
--  after launch this request 
 #### Example2:
 -  serch all doccuments withonly :
    type="log"
 
--  curl --location --request GET 'http://localhost:8080/search?page=0&type=log'
+- need to launch: _curl --location --request GET 'http://localhost:8080/search?page=0&type=log'_
 
 #### POSTMAN:
 ![garphe2](images/gr3.png)
