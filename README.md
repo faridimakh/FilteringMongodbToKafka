@@ -38,6 +38,7 @@ Filtering is possible on the following fields:
 - bot,
 - namespace,
 - monid,
+- wiki
 - domain.
 ### . Examples:
 #### Example1:
