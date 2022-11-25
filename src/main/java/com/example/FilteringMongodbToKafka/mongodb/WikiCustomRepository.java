@@ -7,5 +7,5 @@ import java.util.List;
 
 
 public interface WikiCustomRepository {
-    public List<WikiChange> findWikisByProperties(String type, String title, String user, Boolean bot, Integer namespace, String monid, String domain, Pageable page);
+    public List<WikiChange> findWikisByProperties(String type, String title, String user, Boolean bot, Integer namespace, String monid, String wiki, String domain, Pageable page);
 }

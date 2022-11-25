@@ -25,16 +25,17 @@ public class Controller {
     KafkaProducerService kafkasender;
 
     @GetMapping("/search")
-    public ResponseEntity<List<WikiChange>>  searchPerson(
+    public ResponseEntity<List<WikiChange>> searchPerson(
             @RequestParam(required = false) String type,
             @RequestParam(required = false) String title,
             @RequestParam(required = false) String user,
             @RequestParam(required = false) Boolean bot,
             @RequestParam(required = false) Integer namespace,
             @RequestParam(required = false) String monid,
+            @RequestParam(required = false) String wiki,
             @RequestParam(required = false) String domain,
             @RequestParam Integer page) {
-        ResponseEntity<List<WikiChange>> reponse = ResponseEntity.ok().body(wikiService.fetchWikisByProperties(type, title, user, bot, namespace, monid, domain, page));
+        ResponseEntity<List<WikiChange>> reponse = ResponseEntity.ok().body(wikiService.fetchWikisByProperties(type, title, user, bot, namespace, monid, wiki, domain, page));
         List<WikiChange> tokafka = reponse.getBody();
         assert tokafka != null;
         if (tokafka.size() > 0) kafkasender.send(tokafka);

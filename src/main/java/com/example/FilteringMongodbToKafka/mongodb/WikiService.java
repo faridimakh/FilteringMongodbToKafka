@@ -17,8 +17,8 @@ public class WikiService {
         return wIkiRepository.insert(wikilist);
     }
 
-    public List<WikiChange> fetchWikisByProperties(String type,String title, String user, Boolean bot, Integer namespace, String monid, String domain, Integer page) {
-        return wIkiRepository.findWikisByProperties(type,title, user, bot, namespace, monid, domain,PageRequest.of(0, 10000) );
+    public List<WikiChange> fetchWikisByProperties(String type,String title, String user, Boolean bot, Integer namespace, String monid, String wiki,String domain, Integer page) {
+        return wIkiRepository.findWikisByProperties(type,title, user, bot, namespace, monid, wiki,domain,PageRequest.of(0, 10000) );
     }
 }
 
